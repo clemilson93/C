@@ -25,22 +25,10 @@ int **construiMatriz(int _numeroDeLinhas, int _numeroDeColunas, int _preenchimen
             }
         }
     }
-
-    printf("Matriz criada:\n");
-    for (int i = 0; i < _numeroDeLinhas; i++)
-    {
-        for (int j = 0; j < _numeroDeColunas; j++)
-        {
-            printf("%d-", _matriz[i][j]);
-        }
-        printf("\n");
-    }
-    printf("\n");
-    
     return _matriz;
 }
 
-void multiplicarMatrizes(int **_matriz1, int **_matriz2, int _matriz1NumeroDeLinhas, int _matriz1NumeroDeColunas, int _matriz2NumeroDeLinhas, int _matriz2NumeroDeColunas){
+int **multiplicarMatrizes(int **_matriz1, int **_matriz2, int _matriz1NumeroDeLinhas, int _matriz1NumeroDeColunas, int _matriz2NumeroDeLinhas, int _matriz2NumeroDeColunas){
     int **matrizResultante = construiMatriz(_matriz1NumeroDeLinhas, _matriz2NumeroDeColunas, 0);
     
     for (int l = 0; l < _matriz1NumeroDeLinhas; l++){
@@ -52,15 +40,18 @@ void multiplicarMatrizes(int **_matriz1, int **_matriz2, int _matriz1NumeroDeLin
             matrizResultante[l][j] = termo;
         }
     }
+    return matrizResultante;
+}
 
-    printf("Matriz resultante de multiplicacao:\n");
-    for (int i = 0; i < _matriz1NumeroDeLinhas; i++)
+void visualizarMatriz(int **_matriz, int _numeroDeLinhas, int _numeroDeColunas){
+    for (int i = 0; i < _numeroDeLinhas; i++)
     {
-        for (int j = 0; j < _matriz2NumeroDeColunas; j++)
+        printf("| ");
+        for (int j = 0; j < _numeroDeColunas; j++)
         {
-            printf("%d-", matrizResultante[i][j]);
+            printf("%d ", _matriz[i][j]);
         }
-        printf("\n");
+        printf("|\n");
     }
     printf("\n");
 }
@@ -83,7 +74,8 @@ int main(){
         int **matriz1 = construiMatriz(mt1_numLinhas, mt1_numColunas, 1);
         printf("Criar matriz 2:\n");
         int **matriz2 = construiMatriz(mt2_numLinhas, mt2_numColunas, 1);
-        multiplicarMatrizes(matriz1, matriz2, mt1_numLinhas, mt1_numColunas, mt2_numLinhas, mt2_numColunas);
+        int **matrizResultante = multiplicarMatrizes(matriz1, matriz2, mt1_numLinhas, mt1_numColunas, mt2_numLinhas, mt2_numColunas);
+        visualizarMatriz(matrizResultante, mt1_numLinhas, mt2_numColunas);
     }
     else{
         printf("ERRO! Numero de colunas da primeira matriz e diferente do numero de linhas da segunda matriz.\n");
