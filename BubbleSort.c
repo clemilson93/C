@@ -13,13 +13,13 @@ void mostrarVetor(int vetor[], int tamanho){
 }
 
 void bubbleSort(int _vetor[], int _tamanho, int _ordem){
-    int troca;
+    int troca, i, temp;
     do{
         troca = 0;
-        for(int i = 0; i < (_tamanho - 1); i++){
+        for(i = 0; i < (_tamanho - 1); i++){
             if(_ordem == CRESCENTE){
                 if(_vetor[i] > _vetor[i + 1]){
-                    int temp = _vetor[i];
+                    temp = _vetor[i];
                     _vetor[i] = _vetor[i + 1];
                     _vetor[i + 1] = temp;
                     troca++;
@@ -27,11 +27,11 @@ void bubbleSort(int _vetor[], int _tamanho, int _ordem){
             }
             if(_ordem == DECRESCENTE){
                 if(_vetor[i] < _vetor[i + 1]){
-                int temp = _vetor[i];
-                _vetor[i] = _vetor[i + 1];
-                _vetor[i + 1] = temp;
-                troca++;
-            }
+                    temp = _vetor[i];
+                    _vetor[i] = _vetor[i + 1];
+                    _vetor[i + 1] = temp;
+                    troca++;
+                }
             }
         }
     }while(troca > 0);

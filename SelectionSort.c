@@ -5,31 +5,33 @@
 #define DECRESCENTE 1
 
 void selectionSort(int _vetor[], int _tamanho, int _ordem){
-    int i, j, menor, posicaoDoMenor;
+    int i, j, elementoMenor, posicaoDoElementoMenor;
     for(j = 0; j < _tamanho; j++){
-        menor = _vetor[j];
-        posicaoDoMenor = j;
+        elementoMenor = _vetor[j];
+        posicaoDoElementoMenor = j;
         for(i = j + 1; i < _tamanho; i++){
             if(_ordem == DECRESCENTE){
-                if(menor < _vetor[i]){
-                    menor = _vetor[i];
-                    posicaoDoMenor = i;
+                if(elementoMenor < _vetor[i]){
+                    elementoMenor = _vetor[i];
+                    posicaoDoElementoMenor = i;
                 }
             }
             if(_ordem == CRESCENTE){
-                if(menor > _vetor[i]){
-                    menor = _vetor[i];
-                    posicaoDoMenor = i;
+                if(elementoMenor > _vetor[i]){
+                    elementoMenor = _vetor[i];
+                    posicaoDoElementoMenor = i;
                 }
             }
         }
-        _vetor[posicaoDoMenor] = _vetor[j];
-        _vetor[j] = menor;
+        if(elementoMenor != _vetor[j]){
+            _vetor[posicaoDoElementoMenor] = _vetor[j];
+            _vetor[j] = elementoMenor;
+        }
     }
 }
 
 int main(){
-    int vetor[] = {25, 52, 2, 19, -5, 36, -15};
+    int vetor[] = {25, 52, -15, 36, -5, 36, -15};
     int i;
     float tempoDeExecucao;
     time_t tempoInicial, tempoFinal;

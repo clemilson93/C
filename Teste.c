@@ -65,5 +65,24 @@ int main(){
     printf("Resultado = %d", g);
     //fim do teste 4
     printf("\n*\n");
+    int *a, b;
+
+    b = 100;
+
+    a = &b;
+
+    func(a, b);
+
+    printf ("%d, ", *a);
+
+    printf ("%d", b);
     return 0;
+}
+
+void func (int *a, int b) {
+
+    *a = *a + b;
+
+    b = 150;
+
 }
